@@ -142,7 +142,7 @@ module Puma
 
     def close
       begin
-        @io.close
+        @io.close rescue nil
       rescue IOError
         Thread.current.purge_interrupt_queue if Thread.current.respond_to? :purge_interrupt_queue
       end
